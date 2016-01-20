@@ -4,6 +4,7 @@ package com.company;
  * Created by liaokai on 16/1/20.
  */
 public class Hero {
+
     //attributes
     private String firstName;
     private String lastName;
@@ -57,11 +58,15 @@ public class Hero {
             if (skill != null && mana > skill.getCost()) {
                 defender.health -= skill.getDamage();
                 this.mana = 0;
-                if (showDetail == 1){
+                if (showDetail == 1) {
                     System.out.print(this.firstName + " used magic and damaged " + defender.firstName + " by " + skill.getDamage() + "\n");
                 }
             }
         }
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     public double getHealth() {
@@ -75,4 +80,6 @@ public class Hero {
     public void setSkill(int cost, double damage) {
         this.skill = new Skill(cost, damage);
     }
+
+
 }
