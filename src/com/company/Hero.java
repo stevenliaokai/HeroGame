@@ -8,17 +8,16 @@ public class Hero {
     public String lastName;
     public int attDmg;
     public int def;
-    public String weapon;
-    public int health;
+    public double health;
     public int shield;
     public boolean isBoss;
+    public Weapon weapon;
 
-    public Hero(String firstName, String lastName, int attDmg, int def, String weapon, int health, int shield, boolean isBoss) {
+    public Hero(String firstName, String lastName, int attDmg, int def, double health, int shield, boolean isBoss) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.attDmg = attDmg;
         this.def = def;
-        this.weapon = weapon;
         this.health = health;
         this.shield = shield;
         this.isBoss = isBoss;
@@ -33,6 +32,9 @@ public class Hero {
                 attDmgThisTime = this.attDmg * 3;
             }
             defender.health -= attDmgThisTime - defender.def;
+            if (this.weapon != null) {
+                this.health += (attDmgThisTime - defender.def)*this.weapon.lifeSteal;
+            }
         }
     }
 }
