@@ -4,7 +4,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        Weapon infiniteBlade = new Weapon(20);
+        Weapon infiniteBlade = new Weapon(20, 0.2);
         Hero Steven = new Hero("Steven", "Liao", 35, 20, 600, 1, false);
         Steven.weapon = infiniteBlade;
         Hero Max = new Hero("Max", "Zeng", 30, 15, 500, 10, true);

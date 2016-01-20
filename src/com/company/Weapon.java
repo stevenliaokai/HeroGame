@@ -5,8 +5,10 @@ package com.company;
  */
 public class Weapon {
     public double lifeSteal;
-    public Weapon(double lifeSteal){
+    public double crit;
+    public Weapon(double lifeSteal, double crit){
         this.lifeSteal = lifeSteal/100;
+        this.crit = crit;
     }
 }
 

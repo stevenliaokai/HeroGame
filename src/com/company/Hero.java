@@ -27,9 +27,12 @@ public class Hero {
         if (defender.shield > 0) {
             defender.shield--;
         } else {
-            int attDmgThisTime = this.attDmg;
+            double attDmgThisTime = this.attDmg;
+            if (this.weapon != null){
+                attDmgThisTime = attDmgThisTime*(1+this.weapon.crit);
+            }
             if (this.isBoss && this.health < 200) {
-                attDmgThisTime = this.attDmg * 3;
+                attDmgThisTime = attDmgThisTime * 3;
             }
             defender.health -= attDmgThisTime - defender.def;
             if (this.weapon != null) {
