@@ -7,10 +7,10 @@ public class Main {
     public static void main(String[] args) {
         //setup
         Weapon infiniteBlade = new Weapon(20, 0.2, new Gem(0.3));
-        Hero Steven = new Hero("Steven", "Liao", 35, 20, 600, 1, false);
-        Hero Garen = new Hero("Garen", "Garen", 30, 20, 600, 5, true);
+        Hero Steven = new Hero("Steven", 35, 20, 600, 1, false);
+        Hero Garen = new Hero("Garen", 30, 20, 600, 5, true);
         Steven.setWeapon(infiniteBlade);
-        Hero Max = new Hero("Max", "Zeng", 30, 15, 500, 10, true);
+        Hero Max = new Hero("Max", 30, 15, 500, 10, true);
         Max.setSkill(5, 100);
         int showDetail = askShowDetail();
 

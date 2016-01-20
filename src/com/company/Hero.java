@@ -7,7 +7,6 @@ public class Hero {
 
     //attributes
     private String firstName;
-    private String lastName;
     private int attDmg;
     private int def;
     private double health;
@@ -19,9 +18,8 @@ public class Hero {
     private Skill skill;
 
     //constructors
-    public Hero(String firstName, String lastName, int attDmg, int def, double health, int shield, boolean isBoss) {
+    public Hero(String firstName, int attDmg, int def, double health, int shield, boolean isBoss) {
         this.firstName = firstName;
-        this.lastName = lastName;
         this.attDmg = attDmg;
         this.def = def;
         this.health = health;
@@ -33,12 +31,16 @@ public class Hero {
 
     //methods
     public void attack(Hero defender, int showDetail) {
+
+        boolean isShielded = false;
+        double physicalDmg = 0;
+        double magicDmg = 0;
+
+        //start attacking
         this.mana += 1;
         if (defender.shield > 0) {
             defender.shield--;
-            if (showDetail == 1) {
-                System.out.print(defender.firstName + " used shield to block the " + this.firstName + "'s attack\n");
-            }
+            isShielded = true;
         } else {
             double attDmgThisTime = this.attDmg;
             if (this.weapon != null) {
@@ -47,22 +49,29 @@ public class Hero {
             if (this.isBoss && this.health < 200) {
                 attDmgThisTime = attDmgThisTime * 3;
             }
-            double finalDamage = attDmgThisTime - defender.def;
-            defender.health -= finalDamage;
-            if (showDetail == 1) {
-                System.out.print(this.firstName + " basic attacked " + defender.firstName + " by " + finalDamage + "\n");
-            }
+            physicalDmg = attDmgThisTime - defender.def;
+            defender.health -= physicalDmg;
             if (this.weapon != null) {
                 this.health += (attDmgThisTime - defender.def) * this.weapon.getLifeSteal();
             }
 
-
             if (skill != null && mana > skill.getCost()) {
-                defender.health -= skill.getDamage();
+                magicDmg = skill.getDamage();
+                defender.health -= magicDmg;
                 this.mana = 0;
-                if (showDetail == 1) {
-                    System.out.print(this.firstName + " used magic and damaged " + defender.firstName + " by " + skill.getDamage() + "\n");
-                }
+            }
+        }
+
+        //show detail
+        if(showDetail == 1){
+            if(isShielded) {
+                System.out.print(defender.firstName + " used shield to block the " + this.firstName + "'s attack\n");
+            }
+            if(physicalDmg > 0){
+                System.out.print(this.firstName + " basic attacked " + defender.firstName + " by " + physicalDmg + "\n");
+            }
+            if(magicDmg > 0){
+                System.out.print(this.firstName + " used magic and damaged " + defender.firstName + " by " + magicDmg + "\n");
             }
         }
     }
