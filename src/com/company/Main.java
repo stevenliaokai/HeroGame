@@ -4,14 +4,18 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        // writegit  your code here
-        int hurt = getDmg(300, 150);
-        System.out.print("Hurt:" + hurt);
-
+        Hero Steven = new Hero("Steven", "Liao", 35, 20, "shuangdao", 600);
+        Hero Max = new Hero("Max", "Zeng", 30, 15, "", 500);
+        int i = 0;
+        while(i < 10){
+            i++;
+            Attack(Max, Steven);
+        }
+        System.out.print(Steven.health);
     }
 
-    public static int getDmg(int attackDamage, int defence) {
-        return attackDamage - defence;
+    public static void Attack(Hero Attacker, Hero defender){
+        defender.health -= Attacker.attDmg - defender.def;
     }
 }
 
