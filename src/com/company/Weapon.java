@@ -10,20 +10,20 @@ public class Weapon {
     private Gem critGem;
 
     //constructors
-    public Weapon(double lifeSteal, double crit){
+    public Weapon(double lifeSteal, double crit) {
         this.lifeSteal = lifeSteal;
         this.crit = crit;
     }
 
-    public Weapon(double lifeSteal, double crit, Gem critGem){
+    public Weapon(double lifeSteal, double crit, Gem critGem) {
         this.lifeSteal = lifeSteal;
         this.crit = crit;
         this.critGem = critGem;
     }
 
     //methods
-    public double getCrit(){
-        if(this.critGem != null){
+    public double getCrit() {
+        if (this.critGem != null) {
             return this.crit + this.critGem.crit;
         } else {
             return this.crit;
@@ -31,7 +31,7 @@ public class Weapon {
     }
 
     public double getLifeSteal() {
-        return lifeSteal/100;
+        return lifeSteal / 100;
     }
 }
 

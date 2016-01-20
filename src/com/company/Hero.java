@@ -11,6 +11,7 @@ public class Hero {
     private int attDmg;
     private int def;
     private double health;
+    private double maxHealth;
     private int shield;
     private boolean isBoss;
     private Weapon weapon;
@@ -24,13 +25,14 @@ public class Hero {
         this.attDmg = attDmg;
         this.def = def;
         this.health = health;
+        this.maxHealth = health;
         this.shield = shield;
         this.isBoss = isBoss;
         this.mana = 0;
     }
 
     //methods
-    public void Attack(Hero defender, int showDetail) {
+    public void attack(Hero defender, int showDetail) {
         this.mana += 1;
         if (defender.shield > 0) {
             defender.shield--;
@@ -63,6 +65,10 @@ public class Hero {
                 }
             }
         }
+    }
+
+    public void restoreHealth() {
+        this.health = this.maxHealth;
     }
 
     public String getFirstName() {

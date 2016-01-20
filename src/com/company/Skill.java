@@ -9,7 +9,7 @@ public class Skill {
     private double damage;
 
     //constructors
-    public Skill(int cost, double damage){
+    public Skill(int cost, double damage) {
         this.cost = cost;
         this.damage = damage;
     }

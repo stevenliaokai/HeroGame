@@ -6,7 +6,7 @@ package com.company;
 public class Gem {
     public double crit;
 
-    public Gem(double crit){
+    public Gem(double crit) {
         this.crit = crit;
     }
 
